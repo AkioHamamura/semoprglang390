@@ -92,8 +92,10 @@
       result = parseIOOperation();
     } else if(has(Token.IF)) {
       result = parseBranch();
-    } else if(has(Token.REPEAT)) {
-      result = parseLoop();
+    } else if(has(Token.REPEAT, Token.WHILE)) {
+      result = parseWhileLoop();
+    //} else if(has(Token.REPEAT)) {
+    //  result = parseLoop();
     } else if(!has(Token.NEWLINE)) {
       result = parseExpression();
     }
@@ -147,6 +149,26 @@
   /**
    < Loop >        ::= REPEAT WHILE < Condition > NEWLINE < Program > END REPEAT
   */
+  private ParseTree parseWhileLoop() {
+    mustBe(Token.REPEAT);
+    mustBe(Token.WHILE);
+    ParseTree condition = parseCondition();
+    mustBe(Token.NEWLINE);
+    ParseTree program = parseProgram();
+    mustBe(Token.END);
+    mustBe(Token.REPEAT);
+
+    Loop result = new Loop();
+    result.setLeft(condition);
+    result.setRight(program);
+
+    return result;
+  }
+
+
+  /**
+   < Loop >        ::= REPEAT < Condition > NEWLINE < Program > END REPEAT
+   */
   private ParseTree parseLoop() {
     mustBe(Token.REPEAT);
     mustBe(Token.WHILE);
