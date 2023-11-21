@@ -7,7 +7,7 @@ input count_end
 input increment
 
 num = start
-repeat num <= count_end
+repeat while num <= count_end
   display num
   num = num + increment
 end repeat

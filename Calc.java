@@ -13,7 +13,7 @@ public class Calc
     RefEnv env = new RefEnv();
 
     while(true) {
-      System.out.print("> ");
+      System.out.print(">  ");
       System.out.flush();
       String line = scan.nextLine() + "\n";
       Lexer lex = new Lexer(new ByteArrayInputStream(line.getBytes(StandardCharsets.UTF_8)));

@@ -145,10 +145,11 @@
   }
 
   /**
-   < Loop >        ::= WHILE < Condition > NEWLINE < Program > END WHILE
+   < Loop >        ::= REPEAT WHILE < Condition > NEWLINE < Program > END REPEAT
   */
   private ParseTree parseLoop() {
     mustBe(Token.REPEAT);
+    mustBe(Token.WHILE);
     ParseTree condition = parseCondition();
     mustBe(Token.NEWLINE);
     ParseTree program = parseProgram();

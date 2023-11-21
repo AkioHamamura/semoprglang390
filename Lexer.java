@@ -201,7 +201,8 @@ public class Lexer {
       setToken(Token.IF);
     } else if(str.equals("end")) {
       setToken(Token.END);
-    //} else if(str.equals("while")) {
+    } else if(str.equals("while")) {
+      setToken(Token.WHILE);
     } else if(str.equals("repeat")) {
       setToken(Token.REPEAT);
     } else if(str.equals("dimension")) {
